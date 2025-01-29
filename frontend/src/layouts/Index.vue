@@ -2,11 +2,13 @@
 import { 
 	ref, 
 	computed,
-	onBeforeMount
+	onBeforeMount,
+	onMounted
 } from 'vue';
 import { useRoute }            from 'vue-router';
 import { useAuthStore }        from '@/stores/Auth';
 import { useBottomSheetStore } from '@/stores/BottomSheet';
+import { useMusicStore }       from '@/stores/Music';
 import FooterItem              from '@/components/FooterItem.vue';
 import BottomSheet             from '@/components/BottomSheet.vue';
 import IconMagnifyingGlass     from '@/icons/MagnifyingGlass.vue';
@@ -17,12 +19,14 @@ import type { MusicModel }     from '@/models/Music';
 import type { UserIntroductionModel } from '@/models/User';
 
 
-const route     = useRoute();
-const authStore = useAuthStore();
-const bsStore   = useBottomSheetStore();
-const user      = computed<UserIntroductionModel>(() => authStore.user);
+const route      = useRoute();
+const authStore  = useAuthStore();
+const bsStore    = useBottomSheetStore();
+const musicStore = useMusicStore();
+const user       = computed<UserIntroductionModel>(() => authStore.user);
 
 onBeforeMount(authStore.checkAuth);
+onMounted(musicStore.getMusics);
 </script>
 
 <template>
@@ -49,7 +53,7 @@ onBeforeMount(authStore.checkAuth);
 		<FooterItem to="/" :icon="IconHome" />
 		<FooterItem to="/search" :icon="IconMagnifyingGlass" />
 		<FooterItem to="/albums" :icon="IconMusicalNote" />
-		<FooterItem to="/profile" :icon="IconUser" />
+		<!-- <FooterItem to="/profile" :icon="IconUser" /> -->
 	</footer>
 </template>
 

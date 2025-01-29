@@ -18,9 +18,14 @@ const router = createRouter({
 					component: () => import('@/views/Home.vue')
 				},
 				{
-					path: '/:id',
-					name: 'music',
-					component: () => import('@/views/Music.vue')
+					path: '/albums',
+					name: 'albums',
+					component: () => import('@/views/Albums.vue')
+				},
+				{
+					path: '/search',
+					name: 'search',
+					component: () => import('@/views/Search.vue')
 				},
 			],
 		},

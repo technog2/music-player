@@ -8,20 +8,20 @@ import MenuItem                from '@/components/MenuItem.vue';
 const bsStore    = useBottomSheetStore();
 const musicStore = useMusicStore();
 
-onMounted(async () => {
-	// for (let i = 1; i < 10; i++) {
-	// 	musics.value.push({
-	// 		id:      'music_' + i,
-	// 		title:   'Music ' + i,
-	// 		artist:  i % 3 !== 0 ? 'Hiboky' : 'Feild',
-	// 		poster:  `/src/assets/images/img-${i}.jpg`,
-	// 		src:     '/src/assets/musics/Frozen.mp3',
-	// 		isLiked: i % 3 === 0,
-	// 	});
-	// }
+// onMounted(async () => {
+// 	// for (let i = 1; i < 10; i++) {
+// 	// 	musics.value.push({
+// 	// 		id:      'music_' + i,
+// 	// 		title:   'Music ' + i,
+// 	// 		artist:  i % 3 !== 0 ? 'Hiboky' : 'Feild',
+// 	// 		poster:  `/src/assets/images/img-${i}.jpg`,
+// 	// 		src:     '/src/assets/musics/Frozen.mp3',
+// 	// 		isLiked: i % 3 === 0,
+// 	// 	});
+// 	// }
 
-	await musicStore.getMusics()
-});
+// 	await musicStore.getMusics()
+// });
 </script>
 
 <template>
