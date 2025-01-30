@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted }      from 'vue';
-import { useBottomSheetStore } from '@/stores/BottomSheet';
-import { useMusicStore }       from '@/stores/Music';
-import Music                   from '@/components/Music.vue';
-import MenuItem                from '@/components/MenuItem.vue';
+import { useBottomSheetStore } from '../stores/BottomSheet';
+import { useMusicStore }       from '../stores/Music';
+import Music                   from '../components/Music.vue';
+import MenuItem                from '../components/MenuItem.vue';
 
 const bsStore    = useBottomSheetStore();
 const musicStore = useMusicStore();
@@ -30,7 +30,7 @@ const musicStore = useMusicStore();
 			v-for="album, index in musicStore.albums" 
 			:key="album.id"
 			:title="album.title"
-			:active="album.active" 
+			:active="!!album.active" 
 			@click="musicStore.setActive(index)"
 		/>
 	</div>

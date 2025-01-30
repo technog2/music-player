@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter }     from 'vue-router';
-import { useMusicStore } from '@/stores/Music';
-import Album             from '@/components/Album.vue';
+import { useMusicStore } from '../stores/Music';
+import Album             from '../components/Album.vue';
 
 const router     = useRouter();
 const musicStore = useMusicStore();
@@ -18,7 +18,7 @@ function click(index: number) {
 			v-for="album, index in musicStore.albums" 
 			:key="album.id"
 			:title="album.title"
-			:active="album.active" 
+			:active="!!album.active" 
 			@click="click(index)"
 		/>
 	</div>

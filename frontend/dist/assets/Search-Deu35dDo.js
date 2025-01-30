@@ -1,0 +1,1 @@
+import{u as e}from"./BottomSheet-iNGgHWSz.js";import{u as t}from"./Music-DpP9E8q5.js";import{a as o,b as s,o as r}from"./index-DFJhN67m.js";const a={class:"text-xl text-center"},u=o({__name:"Search",setup(n){return e(),t(),(c,m)=>(r(),s("div",a,"Comming soon!"))}});export{u as default};

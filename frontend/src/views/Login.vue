@@ -5,10 +5,10 @@ import {
 	onMounted,
 } from 'vue';
 import { useRouter }    from 'vue-router';
-import { useApi }       from '@/assets/ts/Api';
-import { useDom }       from '@/assets/ts/Dom';
-import { useAuthStore } from '@/stores/Auth'
-import SimpleButton     from '@/components/SimpleButton.vue';
+import { useApi }       from '../assets/ts/Api';
+import { useDom }       from '../assets/ts/Dom';
+import { useAuthStore } from '../stores/Auth'
+import SimpleButton     from '../components/SimpleButton.vue';
 
 const router         = useRouter();
 const api            = useApi();
@@ -74,7 +74,7 @@ async function goNext(index: number) {
 	else dom.focus(`index-${index + 1}`);
 }
 
-function delay(n?: number = 500) {
+function delay(n: number = 500) {
 	return new Promise(r => setTimeout(r, n));
 }
 </script>

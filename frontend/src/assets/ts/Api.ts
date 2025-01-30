@@ -21,7 +21,6 @@ export function useApi(loadingStore?: any) {
 		}
 
 		loadingStore?.turn(loading.name, loading.key, true);
-		// if (opts?.loadingVar) opts?.loadingVar?.value = true;
 		if (opts?.loadingVar) opts.loadingVar.value = true;
 
 		try {
@@ -66,11 +65,11 @@ export function useApi(loadingStore?: any) {
 		}
 	}
 
-	const get     = async (path, opts?)       => request('GET'   , path, null, opts);
-	const post    = async (path, body, opts?) => request('POST'  , path, body, opts);
-	const put     = async (path, body, opts?) => request('PUT'   , path, body, opts);
-	const patch   = async (path, body, opts?) => request('PATCH' , path, body, opts);
-	const _delete = async (path, body, opts?) => request('DELETE', path, body, opts);
+	const get     = async (path: string, opts?: any)            => request('GET'   , path, null, opts);
+	const post    = async (path: string, body: any, opts?: any) => request('POST'  , path, body, opts);
+	const put     = async (path: string, body: any, opts?: any) => request('PUT'   , path, body, opts);
+	const patch   = async (path: string, body: any, opts?: any) => request('PATCH' , path, body, opts);
+	const _delete = async (path: string, body: any, opts?: any) => request('DELETE', path, body, opts);
 
 	return {
 		get,

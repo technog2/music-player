@@ -5,8 +5,8 @@ import {
 	watch, 
 	onMounted 
 } from 'vue';
-import { useBottomSheetStore } from '@/stores/BottomSheet';
-import { useMusicStore }       from '@/stores/Music';
+import { useBottomSheetStore } from '../stores/BottomSheet';
+import { useMusicStore }       from '../stores/Music';
 import IconUser                from '@/icons/User.vue';
 import IconHeart               from '@/icons/Heart.vue';
 import IconHeartFill           from '@/icons/HeartFill.vue';
@@ -18,11 +18,11 @@ import IconChevronDown         from '@/icons/ChevronDown.vue';
 import IconX                   from '@/icons/X.vue';
 import IconArrowPath           from '@/icons/ArrowPath.vue';
 import IconBars2               from '@/icons/Bars2.vue';
-import type { MusicModel }     from '@/models/Music';
+import type { MusicModel }     from '../models/Music';
 
 const bsStore     = useBottomSheetStore();
 const musicStore  = useMusicStore();
-const audio       = ref<HTMLDocument>(null);
+const audio       = ref<HTMLDocument | any>(null);
 const currentTime = ref<number>(0);
 const volume      = ref<number>(0.5);
 const loop        = ref<boolean>(false);
@@ -34,7 +34,7 @@ watch(progress, (p: number) =>
 );
 
 onMounted(() => 
-	audio.value.addEventListener('timeupdate', e => 
+	audio.value.addEventListener('timeupdate', (e: any) => 
 		currentTime.value = audio.value?.currentTime
 	)
 );
@@ -44,17 +44,17 @@ function playPause() {
 	audio.value[bsStore.playing ? 'play' : 'pause']();
 }
 
-function toggleBs(type: string) {
+function toggleBs(type: 'active' | 'minimized') {
 	bsStore[type] = !bsStore[type];
 }
 
 function toMin(num: number) {
 	num = Math.floor(num);
 
-	let min:     number = Math.floor(num / 60);
-	let sec:     number = num - (min * 60);
-	let minutes: string = min / 10 < 1 ? `0${min}` : min; 
-	let seconds: string = sec / 10 < 1 ? `0${sec}` : sec;
+	let min:     number          = Math.floor(num / 60);
+	let sec:     number          = num - (min * 60);
+	let minutes: number | string = min / 10 < 1 ? `0${min}` : min; 
+	let seconds: number | string = sec / 10 < 1 ? `0${sec}` : sec;
 
 	return `${minutes}:${seconds}`;
 }
@@ -65,8 +65,8 @@ function toMin(num: number) {
 		<audio 
 			ref="audio" 
 			:src="musicStore.currentMusic?.src" 
-			preload
-			autoplay 
+			autoplay="true" 
+			preload="true"
 			:loop="loop" 
 		></audio>
 
@@ -130,7 +130,7 @@ function toMin(num: number) {
 						<div class="flex items-center justify-center gap-5">
 							<button 
 								@click="musicStore.goPrevious" 
-								:disabled="musicStore.musics.indexOf(musicStore.currentMusic) === 0"
+								:disabled="musicStore.musics.indexOf(musicStore.currentMusic as MusicModel) === 0"
 								class="disabled:opacity-50"
 							><IconBackward /></button>
 							<button @click="playPause" class="bg-white rounded-full p-4 text-black">
@@ -139,7 +139,7 @@ function toMin(num: number) {
 							</button>
 							<button 
 								@click="musicStore.goNext" 
-								:disabled="musicStore.musics.indexOf(musicStore.currentMusic) === musicStore.musics.length - 1"
+								:disabled="musicStore.musics.indexOf(musicStore.currentMusic as MusicModel) === musicStore.musics.length - 1"
 								class="disabled:opacity-50"
 							><IconForward /></button>
 						</div>

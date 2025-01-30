@@ -5,25 +5,24 @@ import {
 	onBeforeMount,
 	onMounted
 } from 'vue';
-import { useRoute }            from 'vue-router';
-import { useAuthStore }        from '@/stores/Auth';
-import { useBottomSheetStore } from '@/stores/BottomSheet';
-import { useMusicStore }       from '@/stores/Music';
-import FooterItem              from '@/components/FooterItem.vue';
-import BottomSheet             from '@/components/BottomSheet.vue';
-import IconMagnifyingGlass     from '@/icons/MagnifyingGlass.vue';
-import IconHome                from '@/icons/Home.vue';
-import IconMusicalNote         from '@/icons/MusicalNote.vue';
-import IconUser                from '@/icons/User.vue';
-import type { MusicModel }     from '@/models/Music';
-import type { UserIntroductionModel } from '@/models/User';
-
+import { useRoute }                   from 'vue-router';
+import { useAuthStore }               from '../stores/Auth';
+import { useBottomSheetStore }        from '../stores/BottomSheet';
+import { useMusicStore }              from '../stores/Music';
+import FooterItem                     from '@/components/FooterItem.vue';
+import BottomSheet                    from '@/components/BottomSheet.vue';
+import IconMagnifyingGlass            from '@/icons/MagnifyingGlass.vue';
+import IconHome                       from '@/icons/Home.vue';
+import IconMusicalNote                from '@/icons/MusicalNote.vue';
+import IconUser                       from '@/icons/User.vue';
+import type { MusicModel }            from '../models/Music';
+import type { UserIntroductionModel } from '../models/User';
 
 const route      = useRoute();
-const authStore  = useAuthStore();
 const bsStore    = useBottomSheetStore();
 const musicStore = useMusicStore();
-const user       = computed<UserIntroductionModel>(() => authStore.user);
+// const authStore  = useAuthStore();
+// const user       = computed<UserIntroductionModel>(() => authStore.user);
 
 // onBeforeMount(authStore.checkAuth);
 onMounted(musicStore.getMusics);

@@ -1,0 +1,1 @@
+import{d as i,r as e}from"./index-DFJhN67m.js";import{u as a}from"./Music-DpP9E8q5.js";const f=i("BottomSheet",()=>{const r=a(),t=e(!1),s=e(!1),o=e(!1);function u(n){r.currentMusic=n,t.value=!0,o.value=!0}return{active:t,minimized:s,playing:o,open:u}});export{f as u};

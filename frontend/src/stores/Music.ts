@@ -1,8 +1,8 @@
 import { ref }                         from 'vue';
 import { defineStore }                 from 'pinia';
-import { useApi }                      from '@/assets/ts/Api';
-import albumsJson                      from '@/assets/albums.json';
-import type { MusicModel, AlbumModel } from '@/models/Music';
+import { useApi }                      from '../assets/ts/Api';
+import albumsJson                      from '../assets/albums.json';
+import type { MusicModel, AlbumModel } from '../models/Music';
 
 export const useMusicStore = defineStore('Music', () => {
 	const api          = useApi();
@@ -21,18 +21,18 @@ export const useMusicStore = defineStore('Music', () => {
 		catch(err) { console.error(err); }
 	}
 
-	function setActive(index?: number = 0) {
+	function setActive(index: number = 0) {
 		albums.value?.map(al => al.active = false);
 		albums.value[index].active = true;
-		musics.value = albums.value.find(item => item.active).musics;
+		musics.value = albums.value.find(item => item.active)?.musics as MusicModel[];
 	}
 
 	function goPrevious() {
-		currentMusic.value = musics.value[musics.value.indexOf(currentMusic.value) - 1];
+		currentMusic.value = musics.value[musics.value.indexOf(currentMusic.value as MusicModel) - 1];
 	}
 
 	function goNext() {
-		currentMusic.value = musics.value[musics.value.indexOf(currentMusic.value) + 1];
+		currentMusic.value = musics.value[musics.value.indexOf(currentMusic.value as MusicModel) + 1];
 	}
 
 	return {

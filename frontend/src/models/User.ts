@@ -4,6 +4,7 @@ type Date     = string
 export interface UserIntroductionModel {
 	id:        ObjectId
 	cellphone: string
+	exp?:      number
 }
 
 export interface UserDetailModel {

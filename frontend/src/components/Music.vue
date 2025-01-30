@@ -2,7 +2,7 @@
 import IconUser      from '@/icons/User.vue';
 import IconHeart     from '@/icons/Heart.vue';
 import IconHeartFill from '@/icons/HeartFill.vue';
-import type { MusicModel } from '@/models/Music';
+import type { MusicModel } from '../models/Music';
 
 defineProps<{ 
 	music: MusicModel

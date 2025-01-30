@@ -1,7 +1,7 @@
 import { ref }             from 'vue';
 import { defineStore }     from 'pinia';
-import { useMusicStore }   from '@/stores/Music';
-import type { MusicModel } from '@/models/Music';
+import { useMusicStore }   from '../stores/Music';
+import type { MusicModel } from '../models/Music';
 
 export const useBottomSheetStore = defineStore('BottomSheet', () => {
 	const musicStore = useMusicStore();
