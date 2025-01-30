@@ -25,7 +25,7 @@ const bsStore    = useBottomSheetStore();
 const musicStore = useMusicStore();
 const user       = computed<UserIntroductionModel>(() => authStore.user);
 
-onBeforeMount(authStore.checkAuth);
+// onBeforeMount(authStore.checkAuth);
 onMounted(musicStore.getMusics);
 </script>
 

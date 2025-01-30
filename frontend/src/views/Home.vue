@@ -25,7 +25,7 @@ const musicStore = useMusicStore();
 </script>
 
 <template>
-	<div class="flex items-center gap-3 mx-4 pb-4 overflow-x-scroll">
+	<div class="flex items-center gap-3 mx-4 pb-3 overflow-x-scroll">
 		<MenuItem 
 			v-for="album, index in musicStore.albums" 
 			:key="album.id"

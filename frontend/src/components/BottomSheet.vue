@@ -97,7 +97,7 @@ function toMin(num: number) {
 
 		<div v-else class="fixed bottom-0 inset-x-0 z-10">
 			<span class="absolute -top-2.5 left-1/2 -translate-x-1/2 w-12 border-2 border-gray-100 rounded-full"></span>
-			<div class="bg-gray-700/90 backdrop-blur rounded-t-3xl h-[97vh] px-4">
+			<div class="bg-gray-700/90 backdrop-blur rounded-t-3xl h-[97vh] px-4 pb-8 overflow-y-scroll">
 				<!-- minimize button -->
 				<button @click="toggleBs('minimized')" class="mx-6 mt-2 mb-1 float-right">
 					<IconChevronDown />
